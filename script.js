@@ -3,15 +3,25 @@ function doubleTrouble(arr) {
     if (arr.length === 0) {
         return arr;
     }
-    const result = [arr[0]];
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] === arr[i - 1]) {
-            result.push(arr[i]); 
+
+    const result = [];
+    let doubled = false;
+    for (let i = 0; i < arr.length; i++) {
+        if (i > 0 && arr[i] === arr[i - 1] && !doubled) {
+
+            result.push(arr[i]);
+            doubled = true;
+        } else if (i > 0 && arr[i] === arr[i - 1] && doubled) {
+
+            result.push(arr[i]);
         } else {
-            result.push(arr[i] * 2); 
+
+            result.push(arr[i] * 2);
         }
     }
+
     return result;
 }
+
 const arr = [1, 2, 2, 3, 4, 4, 5];
 console.log(doubleTrouble(arr));
